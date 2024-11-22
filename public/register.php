@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="password" name="password_confirm" required><br>
     <button type="submit">Register</button>
   </form>
+  <script src="./js/validation.js"></script>
 </body>
 
 </html>
