@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="email" name="email" required><br>
     <label>Password:</label>
     <input type="password" name="password" required><br>
+    <label>Confirm Password:</label>
+    <input type="password" name="password_confirm" required><br>
     <button type="submit">Register</button>
   </form>
 </body>
