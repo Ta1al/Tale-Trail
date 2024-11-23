@@ -6,9 +6,9 @@ class Database
 
   private function __construct()
   {
-    $dsn = 'mysql:host=localhost;dbname=tale_trail_db';
-    $username = 'root';
-    $password = '';
+    $dsn = 'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'];
+    $username = $_ENV['DB_USER'];
+    $password = $_ENV['DB_PASS'];
     $this->pdo = new PDO($dsn, $username, $password);
     $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
