@@ -6,7 +6,7 @@ class Database
 
   private function __construct()
   {
-    $dsn = 'mysql:host=localhost;dbname=tale_trail';
+    $dsn = 'mysql:host=localhost;dbname=tale_trail_db';
     $username = 'root';
     $password = '';
     $this->pdo = new PDO($dsn, $username, $password);
