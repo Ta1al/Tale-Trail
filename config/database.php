@@ -1,12 +1,25 @@
 <?php
-$host = '127.0.0.1';
-$dbname = 'tale_trail_db';
-$username = 'root';
-$password = '';
+class Database
+{
+  private static $instance = null;
+  private $pdo;
 
-try {
-  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  die("Database connection failed: " . $e->getMessage());
+  private function __construct()
+  {
+    $dsn = 'mysql:host=localhost;dbname=tale_trail';
+    $username = 'root';
+    $password = '';
+    $this->pdo = new PDO($dsn, $username, $password);
+    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  }
+
+  public static function getInstance()
+  {
+    if (self::$instance === null) {
+      self::$instance = new Database();
+    }
+    return self::$instance->pdo;
+  }
 }
+
+$pdo = Database::getInstance();
