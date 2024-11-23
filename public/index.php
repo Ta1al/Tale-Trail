@@ -1,3 +1,4 @@
 <?php
 require_once '../config/init.php';
-echo "Welcome to Interactive Storytelling Platform!";
+$username = $_SESSION['username'] ?? null;
+echo "Welcome {$username} to the home page!";
