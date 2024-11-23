@@ -1,6 +1,13 @@
 <?php
 require_once '../config/init.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+  if (isset($_SESSION['user_id'])) {
+    header("Location: /");
+    exit;
+  }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
   $password = $_POST['password'];
