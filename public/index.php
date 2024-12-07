@@ -1,49 +1,61 @@
 <?php
 require_once '../config/init.php';
 require_once '../vendor/autoload.php';
+
+use FastRoute\RouteCollector;
 use App\Controllers\UserController;
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$method = $_SERVER['REQUEST_METHOD'];
-
-$userController = new UserController();
-switch ($method) {
-  case 'GET':
-    switch ($uri) {
-      case '/':
-        require_once '../src/views/home.php';
-        break;
-
-      case '/register':
-        require_once '../src/views/auth/register.php';
-        break;
-
-      case '/login':
-        if (isset($_SESSION['user_id'])) {
-          header("Location: /");
-          exit;
-        }
-        require_once '../src/views/auth/login.php';
-        break;
-
-      case '/logout':
-        $userController->logout();
-        break;
-      default:
-        http_response_code(404);
-        echo "Page not found.";
-        break;
+// Set up the FastRoute dispatcher
+$dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
+  // Define routes
+  $r->addRoute('GET', '/', function () {
+    require_once '../src/views/home.php';
+  });
+  $r->addRoute('GET', '/register', function () {
+    require_once '../src/views/auth/register.php';
+  });
+  $r->addRoute('GET', '/login', function () {
+    if (isset($_SESSION['user_id'])) {
+      header("Location: /");
+      exit;
     }
+    require_once '../src/views/auth/login.php';
+  });
+  $r->addRoute('GET', '/logout', [UserController::class, 'logout']);
 
-    break;
-  case 'POST':
-    if ($uri === '/register')
-      $userController->register();
+  $r->addRoute('POST', '/register', [UserController::class, 'register']);
+  $r->addRoute('POST', '/login', [UserController::class, 'login']);
+});
 
-    if ($uri === '/login')
-      $userController->login();
+// Parse the incoming request
+$httpMethod = $_SERVER['REQUEST_METHOD'];
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Dispatch the route
+$routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
+switch ($routeInfo[0]) {
+  case FastRoute\Dispatcher::NOT_FOUND:
+    http_response_code(404);
+    echo "404 - Page not found.";
     break;
-  default:
-    echo "Method not allowed.";
+
+  case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
+    http_response_code(405);
+    echo "405 - Method not allowed.";
+    break;
+
+  case FastRoute\Dispatcher::FOUND:
+    $handler = $routeInfo[1];
+    $vars = $routeInfo[2];
+
+    if (is_callable($handler)) {
+      // If the handler is a closure (for views)
+      call_user_func_array($handler, $vars);
+    } elseif (is_array($handler)) {
+      // If the handler is a controller and method
+      [$controller, $method] = $handler;
+      (new $controller())->$method($vars);
+    }
     break;
 }
