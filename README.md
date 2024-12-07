@@ -35,7 +35,15 @@
 
 4. **Set Up Database**
    - Create a new MySQL database.
-   - Import the provided SQL schema (if available) to create the necessary tables.
+   - Use this schema:
+   - ```sql
+     CREATE TABLE users (
+         id INT AUTO_INCREMENT PRIMARY KEY,
+         username VARCHAR(255) NOT NULL,
+         email VARCHAR(255) NOT NULL,
+         password VARCHAR(255) NOT NULL
+     );
+     ```
 
 5. **Configure `.env`**
    - Rename `.env.example` to `.env` and update the database connection details.
