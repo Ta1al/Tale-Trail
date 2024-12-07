@@ -35,9 +35,6 @@ switch ($method) {
         break;
     }
 
-    if ($uri === '/logout')
-      $userController->logout();
-
     break;
   case 'POST':
     if ($uri === '/register')
