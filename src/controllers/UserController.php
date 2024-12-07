@@ -52,7 +52,7 @@ class UserController
 
       // Register the user
       $user = new User();
-      if ($user->create($username, $password)) {
+      if ($user->create($username, $email, $password)) {
         echo "Registration successful.";
         header('Location: /login');
         exit;
