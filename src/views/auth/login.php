@@ -1,15 +1,3 @@
-<?php
-require_once '../config/init.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  if (isset($_SESSION['user_id'])) {
-    header("Location: /");
-    exit;
-  }
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 
