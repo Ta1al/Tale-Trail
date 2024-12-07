@@ -12,6 +12,7 @@ class UserController
   {
     $this->db = \Database::getInstance(); // Using singleton
   }
+
   public function register()
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -88,5 +89,13 @@ class UserController
     } else {
       echo "Invalid request method.";
     }
+  }
+
+  public function logout()
+  {
+    session_start();
+    session_unset();
+    session_destroy();
+    header('Location: /login');
   }
 }
