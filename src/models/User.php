@@ -13,13 +13,14 @@ class User
     $this->db = \Database::getInstance(); // Using singleton
   }
 
-  public function create($username, $password)
+  public function create($username, $email, $password)
   {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    $stmt = $this->db->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+    $stmt = $this->db->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)");
     return $stmt->execute([
       ':username' => $username,
+      ':email' => $email,
       ':password' => $hashedPassword,
     ]);
   }
