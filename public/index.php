@@ -12,6 +12,10 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
     require_once '../src/views/home.php';
   });
   $r->addRoute('GET', '/register', function () {
+    if (isset($_SESSION['username'])) {
+      header("Location: /");
+      exit;
+    }
     require_once '../src/views/auth/register.php';
   });
   $r->addRoute('GET', '/login', function () {
