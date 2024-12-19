@@ -14,6 +14,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
   $r->addRoute('GET', '/register', function () {
     if (isset($_SESSION['username'])) {
       header("Location: /");
+      // TODO: Tell the user they are already logged in
       exit;
     }
     require_once '../src/views/auth/register.php';
@@ -21,6 +22,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
   $r->addRoute('GET', '/login', function () {
     if (isset($_SESSION['username'])) {
       header("Location: /");
+      // TODO: Tell the user they are already logged in
       exit;
     }
     require_once '../src/views/auth/login.php';

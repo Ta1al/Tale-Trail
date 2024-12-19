@@ -18,6 +18,7 @@ class UserController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (isset($_SESSION['username'])) {
         header('Location: /');
+        // TODO: Tell the user they are already logged in
         exit;
       }
       $username = $_POST['username'];
@@ -73,6 +74,7 @@ class UserController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (isset($_SESSION['username'])) {
         header('Location: /');
+        // TODO: Tell the user they are already logged in
         exit;
       }
       $username = trim($_POST['username'] ?? '');
