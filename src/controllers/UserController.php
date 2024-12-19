@@ -67,6 +67,10 @@ class UserController
   public function login()
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (isset($_SESSION['username'])) {
+        header('Location: /');
+        exit;
+      }
       $username = trim($_POST['username'] ?? '');
       $password = $_POST['password'] ?? '';
 
