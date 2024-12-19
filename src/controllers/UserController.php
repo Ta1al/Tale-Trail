@@ -16,6 +16,10 @@ class UserController
   public function register()
   {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (isset($_SESSION['username'])) {
+        header('Location: /');
+        exit;
+      }
       $username = $_POST['username'];
       $email = $_POST['email'];
       $password = $_POST['password'];
