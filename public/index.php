@@ -43,7 +43,7 @@ $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 switch ($routeInfo[0]) {
   case FastRoute\Dispatcher::NOT_FOUND:
     http_response_code(404);
-    echo "404 - Page not found.";
+    require_once '../src/views/errors/404.php';
     break;
 
   case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
