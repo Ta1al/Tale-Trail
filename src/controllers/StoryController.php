@@ -43,10 +43,17 @@ class StoryController
     }
 
     $storyModel = new Story();
+    $story = $storyModel->getById($storyId);
+    $username = $_SESSION['username'];
+
+    if ($story['username'] !== $username) {
+      echo "You do not have permission to update this story.";
+      return;
+    }
+
     $title = $storyData['title'];
     $startingScene = $storyData['starting_scene'];
     $choices = $storyData['choices'];
-    $username = $_SESSION['username'];
 
     if ($storyModel->update($storyId, $title, $startingScene, $choices, $username)) {
       echo "Story updated successfully.";
