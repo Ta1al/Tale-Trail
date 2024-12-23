@@ -6,16 +6,18 @@ use App\Models\Story;
 class StoryController
 {
   // Function to create a new story
-  public function createStory($storyData)
+  public function createStory()
   {
     if (!isset($_SESSION['username'])) {
       echo "You must be logged in to create a story.";
       return;
     }
 
+    $storyData = json_decode(file_get_contents('php://input'), true);
+
     $storyModel = new Story();
     $title = $storyData['title'];
-    $startingScene = $storyData['starting_scene'];
+    $startingScene = $storyData['startingScene'];
     $choices = $storyData['choices'];
     $username = $_SESSION['username'];
 
