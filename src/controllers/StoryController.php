@@ -11,7 +11,9 @@ class StoryController
   // Function to get a story by ID
   public function getStory($storyId)
   {
-    // Logic to retrieve the story data from the database
+    $storyModel = new \App\Models\Story();
+    $story = $storyModel->getById($storyId);
+    return $story;
   }
 
   // Function to update a story by ID
