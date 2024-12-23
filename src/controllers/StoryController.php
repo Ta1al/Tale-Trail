@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Models\Story;
 class StoryController
 {
   // Function to create a new story
@@ -11,7 +14,7 @@ class StoryController
       return;
     }
 
-    $storyModel = new \App\Models\Story();
+    $storyModel = new Story();
     $title = $storyData['title'];
     $startingScene = $storyData['starting_scene'];
     $choices = $storyData['choices'];
@@ -27,7 +30,7 @@ class StoryController
   // Function to get a story by ID
   public function getStory($storyId)
   {
-    $storyModel = new \App\Models\Story();
+    $storyModel = new Story();
     $story = $storyModel->getById($storyId);
     return $story;
   }
@@ -47,7 +50,7 @@ class StoryController
   // Function to list all stories
   public function listStories()
   {
-    $storyModel = new \App\Models\Story();
+    $storyModel = new Story();
     $stories = $storyModel->getAll();
     return $stories;
   }
