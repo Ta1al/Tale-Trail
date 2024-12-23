@@ -107,7 +107,6 @@
     </div>
 
     <div id="choicesContainer">
-      <!-- Removed default sub-choices -->
     </div>
     <br>
     <button type="submit">Create Story</button>
