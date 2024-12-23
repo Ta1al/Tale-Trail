@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION['username'])) {
+  echo "You must be logged in to create a story.";
+  return;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
