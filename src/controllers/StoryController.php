@@ -5,7 +5,23 @@ class StoryController
   // Function to create a new story
   public function createStory($storyData)
   {
-    // Logic to save the story data to the database
+    session_start();
+    if (!isset($_SESSION['username'])) {
+      echo "You must be logged in to create a story.";
+      return;
+    }
+
+    $storyModel = new \App\Models\Story();
+    $title = $storyData['title'];
+    $startingScene = $storyData['starting_scene'];
+    $choices = $storyData['choices'];
+    $username = $_SESSION['username'];
+
+    if ($storyModel->create($title, $startingScene, $choices, $username)) {
+      echo "Story created successfully.";
+    } else {
+      echo "Failed to create story.";
+    }
   }
 
   // Function to get a story by ID
