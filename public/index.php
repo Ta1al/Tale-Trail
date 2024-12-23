@@ -4,7 +4,7 @@ require_once '../vendor/autoload.php';
 
 use FastRoute\RouteCollector;
 use App\Controllers\UserController;
-
+use App\Controllers\StoryController;
 // Set up the FastRoute dispatcher
 $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
   // Define routes
@@ -34,6 +34,7 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
   $r->addRoute('GET', '/logout', [UserController::class, 'logout']);
   $r->addRoute('POST', '/register', [UserController::class, 'register']);
   $r->addRoute('POST', '/login', [UserController::class, 'login']);
+  $r->addRoute('POST', '/story/create', [StoryController::class, 'createStory']);
 });
 
 // Parse the incoming request
