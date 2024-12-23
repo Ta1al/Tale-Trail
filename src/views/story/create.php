@@ -93,7 +93,7 @@
 <body>
   <h1>Story Tree Creator</h1>
 
-  <form id="storyForm">
+  <form id="storyForm" action="/story/create" method="POST">
     <div>
       <label for="storyTitle">Story Title:</label><br>
       <input type="text" id="storyTitle" name="storyTitle" required><br>
@@ -189,8 +189,6 @@
     }
 
     document.getElementById('storyForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
       const story = {
         title: document.getElementById('storyTitle').value,
         startingScene: document.getElementById('startingScene').value,
