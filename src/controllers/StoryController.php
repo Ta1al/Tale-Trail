@@ -29,7 +29,8 @@ class StoryController
   // Function to list all stories
   public function listStories()
   {
-    // Logic to retrieve all stories from the database
+    $storyModel = new \App\Models\Story();
+    $stories = $storyModel->getAll();
+    return $stories;
   }
 }
-?>
