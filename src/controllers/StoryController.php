@@ -8,7 +8,6 @@ class StoryController
   // Function to create a new story
   public function createStory($storyData)
   {
-    session_start();
     if (!isset($_SESSION['username'])) {
       echo "You must be logged in to create a story.";
       return;
@@ -38,7 +37,22 @@ class StoryController
   // Function to update a story by ID
   public function updateStory($storyId, $storyData)
   {
-    // Logic to update the story data in the database
+    if (!isset($_SESSION['username'])) {
+      echo "You must be logged in to update a story.";
+      return;
+    }
+
+    $storyModel = new Story();
+    $title = $storyData['title'];
+    $startingScene = $storyData['starting_scene'];
+    $choices = $storyData['choices'];
+    $username = $_SESSION['username'];
+
+    if ($storyModel->update($storyId, $title, $startingScene, $choices, $username)) {
+      echo "Story updated successfully.";
+    } else {
+      echo "Failed to update story.";
+    }
   }
 
   // Function to delete a story by ID
