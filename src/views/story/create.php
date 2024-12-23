@@ -100,16 +100,16 @@ if (!isset($_SESSION['username'])) {
 <body>
   <h1>Story Tree Creator</h1>
 
-  <form id="storyForm" action="/story/create" method="POST">
+  <form id="storyForm">
     <div>
       <label for="storyTitle">Story Title:</label><br>
-      <input type="text" id="storyTitle" name="storyTitle" required><br>
+      <input type="text" id="storyTitle" name="title" required><br>
     </div>
 
     <div>
       <h2>Starting Scene</h2>
       <label for="startingScene">Scene Description:</label><br>
-      <textarea id="startingScene" name="startingScene" rows="4" cols="50" required></textarea>
+      <textarea id="startingScene" name="starting_scene" rows="4" cols="50" required></textarea>
       <button type="button" id="addChoiceButton">Add Choice</button>
     </div>
 
@@ -196,6 +196,8 @@ if (!isset($_SESSION['username'])) {
     }
 
     document.getElementById('storyForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent the default form submission
+
       const story = {
         title: document.getElementById('storyTitle').value,
         startingScene: document.getElementById('startingScene').value,
@@ -237,8 +239,22 @@ if (!isset($_SESSION['username'])) {
         `;
       }
 
-      // The story object is now ready to be sent to PHP
-      console.log('Story data:', story);
+      // Send the story data to the server
+      fetch('/story/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(story)
+      })
+        .then(response => response.text())
+        .then(data => {
+          console.log('Server response:', data);
+          document.body.innerHTML = `<div>${data}</div>`; // Display server response on the whole page
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     });
   </script>
 </body>
