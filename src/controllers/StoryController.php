@@ -65,7 +65,25 @@ class StoryController
   // Function to delete a story by ID
   public function deleteStory($storyId)
   {
-    // Logic to delete the story data from the database
+    if (!isset($_SESSION['username'])) {
+      echo "You must be logged in to delete a story.";
+      return;
+    }
+
+    $storyModel = new Story();
+    $story = $storyModel->getById($storyId);
+    $username = $_SESSION['username'];
+
+    if ($story['username'] !== $username) {
+      echo "You do not have permission to delete this story.";
+      return;
+    }
+
+    if ($storyModel->delete($storyId)) {
+      echo "Story deleted successfully.";
+    } else {
+      echo "Failed to delete story.";
+    }
   }
 
   // Function to list all stories
