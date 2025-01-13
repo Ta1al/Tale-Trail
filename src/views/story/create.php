@@ -1,6 +1,7 @@
 <?php
 if (!isset($_SESSION['username'])) {
-  echo "You must be logged in to create a story.";
+  echo "You must be logged in to create a story. <br>";
+  echo "<a href='/login'>Login</a>";
   return;
 }
 ?>
