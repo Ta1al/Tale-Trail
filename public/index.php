@@ -30,6 +30,12 @@ $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
   $r->addRoute('GET', '/story/create', function () {
     require_once '../src/views/story/create.php';
   });
+  $r->addRoute('GET', '/story/view', function () {
+    require_once '../src/views/story/view.php';
+  });
+  $r->addRoute('GET', '/story/play', function () {
+    require_once '../src/views/story/play.php';
+  });
 
   $r->addRoute('GET', '/logout', [UserController::class, 'logout']);
   $r->addRoute('POST', '/register', [UserController::class, 'register']);
