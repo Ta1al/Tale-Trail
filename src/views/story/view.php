@@ -34,7 +34,7 @@ $stories = $storyController->listStories();
     <?php endforeach; ?>
 
     <?php if (isset($_SESSION['username'])): ?>
-      <div class="create-story" onclick="window.location.href='/create'">
+      <div class="create-story" onclick="window.location.href='/story/create'">
         +
       </div>
     <?php endif; ?>
