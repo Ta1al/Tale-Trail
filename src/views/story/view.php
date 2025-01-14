@@ -20,7 +20,7 @@ $stories = $storyController->listStories();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>View Stories</title>
-  <link rel="stylesheet" href="css/view.css">
+  <link rel="stylesheet" href="/css/view.css">
 </head>
 
 <body>
