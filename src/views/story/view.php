@@ -24,6 +24,7 @@ $stories = $storyController->listStories();
 </head>
 
 <body>
+  <button onclick="window.location.href='/'">Home</button>
   <h1>Available Stories</h1>
   <div class="story-container">
     <?php foreach ($stories as $story): ?>
