@@ -35,6 +35,7 @@ $choices = json_decode($story['choices'], true); // Decode JSON into PHP array
 </head>
 
 <body>
+  <button onclick="window.location.href='/'" style="position: absolute;top:1%;left:1%;">Home</button>
   <div class="container">
     <h1><?php echo $title; ?></h1>
     <div id="game">
