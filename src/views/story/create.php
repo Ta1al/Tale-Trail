@@ -17,6 +17,7 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <body>
+  <button onclick="window.location.href='/'">Home</button>
   <h1>Story Tree Creator</h1>
 
   <form id="storyForm">
