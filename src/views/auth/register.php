@@ -20,6 +20,7 @@
       <input type="password" name="password_confirm" required><br>
       <button type="submit" class="button">Register</button>
     </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
     <script src="./js/validation.js"></script>
   </div>
 </body>
