@@ -1,5 +1,6 @@
 function typeText(element, text, callback) {
   let index = 0;
+  text = text.replace(/(&#039;)/g, "'");
   function type() {
     if (index < text.length) {
       element.textContent += text.charAt(index);
