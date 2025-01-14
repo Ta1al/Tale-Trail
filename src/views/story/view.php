@@ -30,7 +30,7 @@ $stories = $storyController->listStories();
     <?php foreach ($stories as $story): ?>
       <div class="story" onclick="window.location.href='/story/play?id=<?= $story['id']; ?>'">
         <h2><?= htmlspecialchars($story['title']); ?></h2>
-        <p><strong>Starting Scene:</strong> <?= htmlspecialchars(substr($story['starting_scene'], 0, 100)); ?>...</p>
+        <p><?= htmlspecialchars(substr($story['starting_scene'], 0, 100)); ?>...</p>
       </div>
     <?php endforeach; ?>
 
