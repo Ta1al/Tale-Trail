@@ -99,16 +99,12 @@ $stories = $storyController->listStories();
 <body>
   <h1>Available Stories</h1>
   <div class="story-container">
-    <?php if (count($stories) > 0): ?>
-      <?php foreach ($stories as $story): ?>
-        <div class="story" onclick="window.location.href='/story/play?id=<?= $story['id']; ?>'">
-          <h2><?= htmlspecialchars($story['title']); ?></h2>
-          <p><strong>Starting Scene:</strong> <?= htmlspecialchars(substr($story['starting_scene'], 0, 100)); ?>...</p>
-        </div>
-      <?php endforeach; ?>
-    <?php else: ?>
-      <p>No stories available. <a href="/create">Create a new story</a>.</p>
-    <?php endif; ?>
+    <?php foreach ($stories as $story): ?>
+      <div class="story" onclick="window.location.href='/story/play?id=<?= $story['id']; ?>'">
+        <h2><?= htmlspecialchars($story['title']); ?></h2>
+        <p><strong>Starting Scene:</strong> <?= htmlspecialchars(substr($story['starting_scene'], 0, 100)); ?>...</p>
+      </div>
+    <?php endforeach; ?>
 
     <?php if (isset($_SESSION['username'])): ?>
       <div class="create-story" onclick="window.location.href='/create'">
