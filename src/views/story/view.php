@@ -32,12 +32,23 @@ $stories = $storyController->listStories();
       text-align: center;
     }
 
+    .story-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
     .story {
       border: 1px solid #ccc;
       border-radius: 5px;
       padding: 15px;
       margin-bottom: 15px;
       background-color: #fff;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      text-align: center;
     }
 
     .story h2 {
@@ -47,6 +58,31 @@ $stories = $storyController->listStories();
 
     .story p {
       margin: 5px 0;
+    }
+
+    .story:hover {
+      background-color: #f0f8ff;
+    }
+
+    .create-story {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px dashed #007bff;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #fff;
+      width: 300px;
+      height: 150px;
+      cursor: pointer;
+      font-size: 2em;
+      color: #007bff;
+      text-align: center;
+    }
+
+    .create-story:hover {
+      background-color: #f0f8ff;
     }
 
     a {
@@ -62,18 +98,24 @@ $stories = $storyController->listStories();
 
 <body>
   <h1>Available Stories</h1>
+  <div class="story-container">
+    <?php if (count($stories) > 0): ?>
+      <?php foreach ($stories as $story): ?>
+        <div class="story" onclick="window.location.href='/story/play?id=<?= $story['id']; ?>'">
+          <h2><?= htmlspecialchars($story['title']); ?></h2>
+          <p><strong>Starting Scene:</strong> <?= htmlspecialchars(substr($story['starting_scene'], 0, 100)); ?>...</p>
+        </div>
+      <?php endforeach; ?>
+    <?php else: ?>
+      <p>No stories available. <a href="/create">Create a new story</a>.</p>
+    <?php endif; ?>
 
-  <?php if (count($stories) > 0): ?>
-    <?php foreach ($stories as $story): ?>
-      <div class="story">
-        <h2><?= htmlspecialchars($story['title']); ?></h2>
-        <p><strong>Starting Scene:</strong> <?= htmlspecialchars($story['starting_scene']); ?></p>
-        <p><a href="/stories/<?= $story['id']; ?>">View Story</a></p>
+    <?php if (isset($_SESSION['username'])): ?>
+      <div class="create-story" onclick="window.location.href='/create'">
+        +
       </div>
-    <?php endforeach; ?>
-  <?php else: ?>
-    <p>No stories available. <a href="/create">Create a new story</a>.</p>
-  <?php endif; ?>
+    <?php endif; ?>
+  </div>
 </body>
 
 </html>
