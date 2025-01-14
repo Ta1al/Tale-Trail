@@ -23,6 +23,7 @@ class StoryController
 
     if ($storyModel->create($title, $startingScene, $choices, $username)) {
       echo "Story created successfully.";
+      header("Location: /story/view");
     } else {
       echo "Failed to create story.";
     }
