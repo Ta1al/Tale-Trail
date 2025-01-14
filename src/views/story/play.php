@@ -5,7 +5,7 @@ require_once '../vendor/autoload.php';
 // Fetch the story ID from the URL
 $storyId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if ($storyId <= 0) {
-  echo "Invalid story ID.";
+  header("Location: /story/view");
   exit;
 }
 
@@ -15,7 +15,7 @@ $storyController = new StoryController();
 $story = $storyController->getStory($storyId);
 
 if (!$story) {
-  echo "Story not found.";
+  header("Location: /story/view");
   exit;
 }
 
