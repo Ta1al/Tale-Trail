@@ -1,12 +1,15 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: darkgray;
+  background-color: rgba(91, 145, 59, 0.8);
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  color: white;
 }
 button {
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: rgba(91, 145, 59, 0.8);
   color: white;
   border: none;
   border-radius: 5px;
@@ -14,7 +17,7 @@ button {
   transition: background-color 0.3s ease;
 }
 h1 {
-  color: #333;
+  color: white;
   text-align: center;
 }
 
@@ -36,11 +39,12 @@ h1 {
   cursor: pointer;
   text-align: center;
   transition: transform 0.3s, background-color 0.3s;
+  color: #333;
 }
 
 .story h2 {
   margin: 0;
-  color: #007bff;
+  color: #5b913b;
 }
 
 .story p {
@@ -56,7 +60,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px dashed #007bff;
+  border: 2px dashed #5b913b;
   border-radius: 5px;
   padding: 15px;
   margin-bottom: 15px;
@@ -65,9 +69,10 @@ h1 {
   height: 150px;
   cursor: pointer;
   font-size: 2em;
-  color: #007bff;
+  color: #5b913b;
   text-align: center;
   transition: transform 0.3s, background-color 0.3s;
+  color: #333;
 }
 
 .create-story:hover {
@@ -76,10 +81,12 @@ h1 {
 }
 
 a {
-  color: #007bff;
+  color: #5b913b;
   text-decoration: none;
+  color: #333;
 }
 
 a:hover {
   text-decoration: underline;
+  color: #333;
 }

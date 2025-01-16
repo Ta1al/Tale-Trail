@@ -1,31 +1,38 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: darkgray;
+  background-color: #5b913b;
   line-height: 1.6;
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  color: white;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  color: #333;
+  color: white;
 }
 
 label {
   font-weight: bold;
   display: block;
   margin-bottom: 5px;
+  color: white;
 }
 
 input[type="text"],
 textarea {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  color: #333;
+  background-color: #afa;
+  opacity: 0.8;
 }
 
 .choice,
@@ -37,7 +44,8 @@ textarea {
   border-radius: 5px;
   position: relative;
   animation: fadeIn 0.5s ease-in-out;
-  background-color: #fff;
+  background-color: rgba(91, 145, 59, 0.8);
+  color: #333;
 }
 
 .sub-choice {
@@ -62,7 +70,7 @@ textarea {
 button {
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: #5b913b;
   color: white;
   border: none;
   border-radius: 5px;
@@ -71,7 +79,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #5b913b;
 }
 
 @keyframes fadeIn {

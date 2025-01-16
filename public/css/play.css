@@ -1,21 +1,26 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: darkgray;
+  background-color: #5b913b;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  color: white;
 }
 
 .container {
   min-width: 70%;
   margin: 0 auto;
   padding: 20px;
-  background: white;
+  background: rgba(91, 145, 59, 0.8);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  color: #333;
+  background-color: #fff;
 }
 
 h1 {
@@ -24,6 +29,7 @@ h1 {
 
 .scene {
   margin-bottom: 20px;
+  color: #333;
 }
 
 .choices {
@@ -37,8 +43,8 @@ h1 {
 button {
   min-width: 10%;
   padding: 10px;
-  background-color: #007bff;
-  color: white;
+  background-color: lightgreen;
+  color: #333;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -46,15 +52,15 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: darkgreen;
 }
 
 .restart-button {
-  background-color: #dc3545;
+  background-color: red;
 }
 
 .restart-button:hover {
-  background-color: #c82333;
+  background-color: darkred;
 }
 
 @keyframes fadeIn {
@@ -69,4 +75,5 @@ button:hover {
 
 .fade-in {
   animation: fadeIn 1s ease-in-out;
+  color: #333;
 }
