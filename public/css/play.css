@@ -53,6 +53,7 @@ button {
 
 button:hover {
   background-color: darkgreen;
+  color: white;
 }
 
 .restart-button {
